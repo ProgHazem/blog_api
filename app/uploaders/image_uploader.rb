@@ -7,6 +7,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  # Delegates
+  delegate :asset_path, :asset_url, to: :helpers
+  delegate :asset_host, to: ActionController::Base
+
+  # Helpers
+  def helpers
+    @helpers ||= ActionController::Base.helpers
+  end
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir

@@ -9,4 +9,10 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   # mount image
   mount_uploader :image, ImageUploader
+
+  #------------------------- Relations ----------------------#
+  has_many :posts, foreign_key: :author
+  has_many :comments
+
+  validates_uniqueness_of :email
 end

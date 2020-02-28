@@ -19,6 +19,11 @@ Bundler.require(*Rails.groups)
 
 module BlogApi
   class Application < Rails::Application
+    config.active_job.queue_adapter = :sidekiq
+    config.action_controller.asset_host = "http://localhost:3000"
+
+    config.time_zone = 'Cairo' # Your local time zone
+    config.active_record.default_timezone = :local
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
