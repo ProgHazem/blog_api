@@ -13,6 +13,6 @@ class Post < ApplicationRecord
   private
 
   def delete_post_after_24
-    DeletePostWorker.perform_in(1440, id)
+    DeletePostWorker.perform_in(1440.minutes, id)
   end
 end
